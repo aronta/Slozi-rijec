@@ -1,0 +1,38 @@
+{
+	"0": {
+		"word": "pas",
+		"img_path": "res://HintImages/dog.jpg"
+	},
+	"1": {
+		"word": "koš",
+		"img_path": ""
+	},
+	"2": {
+		"word": "sok",
+		"img_path": ""
+	},
+	"3": {
+		"word": "gol",
+		"img_path": ""
+	},
+	"4": {
+		"word": "sat",
+		"img_path": ""
+	},
+	"5": {
+		"word": "med",
+		"img_path": ""
+	},
+	"6": {
+		"word": "sok",
+		"img_path": ""
+	},
+	"7": {
+		"word": "bus",
+		"img_path": ""
+	},
+	"8": {
+		"word": "mač",
+		"img_path": ""
+	}
+}

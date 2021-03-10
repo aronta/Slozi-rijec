@@ -1,0 +1,38 @@
+{
+	"0": {
+		"rijec": "pas",
+		"img_path": ""
+	},
+	"1": {
+		"rijec": "koš",
+		"img_path": ""
+	},
+	"2": {
+		"rijec": "sok",
+		"img_path": ""
+	},
+	"3": {
+		"rijec": "gol",
+		"img_path": ""
+	},
+	"4": {
+		"rijec": "sat",
+		"img_path": ""
+	},
+	"5": {
+		"rijec": "med",
+		"img_path": ""
+	},
+	"6": {
+		"rijec": "sok",
+		"img_path": ""
+	},
+	"7": {
+		"rijec": "bus",
+		"img_path": ""
+	},
+	"8": {
+		"rijec": "mač",
+		"img_path": ""
+	}
+}
