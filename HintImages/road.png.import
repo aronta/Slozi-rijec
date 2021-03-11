@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dog.jpg-f55a0b2e1ee1275aba1303039d2365b4.stex"
+path="res://.import/road.png-c883ea630ed7c8f7c190777ec81c168e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HintImages/dog.jpg"
-dest_files=[ "res://.import/dog.jpg-f55a0b2e1ee1275aba1303039d2365b4.stex" ]
+source_file="res://HintImages/road.png"
+dest_files=[ "res://.import/road.png-c883ea630ed7c8f7c190777ec81c168e.stex" ]
 
 [params]
 

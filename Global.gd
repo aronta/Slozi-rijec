@@ -10,6 +10,8 @@ var suggested_letters_container
 var hint_image_container
 var used_words = []
 
+var mistakes_counter
+var correct_answer_pop_up
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"

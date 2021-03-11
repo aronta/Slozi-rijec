@@ -11,6 +11,14 @@ var i
 onready var timer = get_node("Timer")
 
 # Called when the node enters the scene tree for the first time.
+func move_buttons_away():
+	get_tree().get_root().get_node("Game").get_node("HouseButton").move(Vector2(1296, 0))
+	get_tree().get_root().get_node("Game").get_node("ResetButton").move(Vector2(1400, 0))
+	get_tree().get_root().get_node("Game").get_node("HintButton").move(Vector2(1496, 0))
+	get_tree().get_root().get_node("Game").get_node("BackButton").move(Vector2(0, -100))
+	get_tree().get_root().get_node("Game").get_node("SuggestedLetters").move(Vector2(0, 840))
+	get_tree().get_root().get_node("Game").get_node("BlankLetters").move(Vector2(0, -300))
+
 func _ready():
 	timer.set_wait_time(0.65)
 
@@ -39,6 +47,9 @@ func _process(delta):
 		#ovdje hendlat kad je sve tocno
 		if(Global.correct_counter == Global.letters_len):
 			Global.correct_counter = 0
+			move_buttons_away()
+			Global.correct_answer_pop_up.get_child(4).text = Global.wanted_word
+			Global.correct_answer_pop_up.show()
 			print("Sve je tocno")
 		flag = false
 		

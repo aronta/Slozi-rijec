@@ -47,8 +47,8 @@ tracks/3/keys = {
 [node name="TextureRect" type="TextureRect"]
 modulate = Color( 1, 1, 1, 0 )
 margin_right = 216.0
-margin_bottom = 288.0
-rect_min_size = Vector2( 216, 288 )
+margin_bottom = 320.0
+rect_min_size = Vector2( 216, 320 )
 expand = true
 stretch_mode = 5
 __meta__ = {

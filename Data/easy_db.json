@@ -1,38 +1,34 @@
 {
 	"0": {
 		"word": "pas",
-		"img_path": "res://HintImages/dog.jpg"
+		"img_path": "res://HintImages/dog.png"
 	},
 	"1": {
-		"word": "koš",
-		"img_path": ""
+		"word": "šal",
+		"img_path": "res://HintImages/sal.png"
 	},
 	"2": {
 		"word": "sok",
-		"img_path": ""
+		"img_path": "res://HintImages/sok.png"
 	},
 	"3": {
 		"word": "gol",
-		"img_path": ""
+		"img_path": "res://HintImages/gol.png"
 	},
 	"4": {
 		"word": "sat",
-		"img_path": ""
+		"img_path": "res://HintImages/sat.png"
 	},
 	"5": {
 		"word": "med",
-		"img_path": ""
+		"img_path": "res://HintImages/med.png"
 	},
 	"6": {
-		"word": "sok",
-		"img_path": ""
+		"word": "bus",
+		"img_path": "res://HintImages/bus.png"
 	},
 	"7": {
-		"word": "bus",
-		"img_path": ""
-	},
-	"8": {
 		"word": "mač",
-		"img_path": ""
+		"img_path": "res://HintImages/mac.png"
 	}
 }

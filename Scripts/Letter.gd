@@ -21,7 +21,6 @@ var changed_mouse_x
 var changed_mouse_y
 
 func _on_Letter_gui_input(event):
-	print("Miš poz:", get_global_mouse_position())
 	if event is InputEventMouseButton:
 		#first_position = rect_global_position
 		#print("Prva poz:", first_position)
@@ -36,7 +35,7 @@ func _on_Letter_gui_input(event):
 		#print(get_global_mouse_position().x)
 #		if(get_global_mouse_position().x > 700 || get_global_mouse_position().x < 55 || get_global_mouse_position().y > 620 || get_global_mouse_position().y < 100):
 #			return
-		if(get_global_mouse_position().x > 1250 || get_global_mouse_position().x < 30 || get_global_mouse_position().y > 690 || get_global_mouse_position().y < 30):
+		if(get_global_mouse_position().x > 1240 || get_global_mouse_position().x < 40 || get_global_mouse_position().y > 680 || get_global_mouse_position().y < 40):
 			return
 #		if(get_global_mouse_position().x > 700):
 #			changed_mouse_x = get_global_mouse_position().x - 50

@@ -5,6 +5,9 @@ onready var letter_box = preload("res://Scenes/Letter.tscn")
 onready var hint_image_box = preload("res://Scenes/HintImg.tscn")
 onready var timer = get_node("HintButtonTimer")
 var img_animation
+var img_fadeIn_flag
+var hint_animation_counter = 0
+onready var hint_animation = get_node("HintButton/AnimationPlayer")
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -12,12 +15,16 @@ var img_animation
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	Global.correct_answer_pop_up = get_node("UI/Menu/PopupMenu")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+func reset_suggestion_box_positions():
+	var suggestion_container = get_node("SuggestedLetters/HBoxContainer")
+	suggestion_container.set_alignment(0)
+
 func delete_children_nodes(parent_node):
 	for n in parent_node.get_children():
 		parent_node.remove_child(n)
@@ -31,8 +38,8 @@ func generate_blank_words():
 		var letter = blank_letter_box.instance()
 		blank_letters_container.add_child(letter)
 	#MOZDA IFAT za ljepotu
-	blank_letters_container.add_constant_override("separation", 50)
-	blank_letters_container.margin_left = 50
+	blank_letters_container.add_constant_override("separation", 55)
+	blank_letters_container.margin_left = 55
 
 func generate_suggested_letters(suggested_word):
 	var suggested_letters_container = get_node("SuggestedLetters/HBoxContainer");
@@ -43,8 +50,8 @@ func generate_suggested_letters(suggested_word):
 		letter.get_children()[0].text = suggested_word[i]
 		suggested_letters_container.add_child(letter)
 	#MOZDA IFAT za ljepotu
-	suggested_letters_container.add_constant_override("separation", 50)
-	suggested_letters_container.margin_left = 50
+	suggested_letters_container.add_constant_override("separation", 55)
+	suggested_letters_container.margin_left = 55
 
 func generate_hint_image(img_path):
 	var hint_image_container = get_node("HintImage")
@@ -65,14 +72,14 @@ func setup_game_scene():
 	var number_of_words = Global.words.size();
 	var used_words
 	
-	var rand = '0'
+	var rand
 #   random za izabrat neki word iz json-a te popunit used words kako bi znali koje smo prosli
-#	while true:
-#		randomize()
-#		rand = randi() % number_of_words
-#		rand = str(rand)
-#		if !(rand in Global.used_words):
-#			break
+	while true:
+		randomize()
+		rand = randi() % number_of_words
+		rand = str(rand)
+		if !(rand in Global.used_words):
+			break
 	
 	Global.used_words.append(rand)
 	
@@ -105,7 +112,8 @@ func setup_game_scene():
 	img_animation = get_node("HintImage/TextureRect/AnimationPlayer")
 	timer.start()
 	
-	
+	img_fadeIn_flag = true
+	hint_animation_counter = 0
 
 func move_all():
 	#.move(x, y) -1280 -> znaci gore
@@ -113,11 +121,33 @@ func move_all():
 	get_node("BlankLetters").move(Vector2(0, 140))
 	get_node("SuggestedLetters").move(Vector2(0, 550))
 	get_node("BackButton").move(Vector2(35, 10))
+	get_node("HouseButton").move(Vector2(-400, 0))
+	get_node("ResetButton").move(Vector2(-390, 0))
 
-func easyPressed():
+func easyPressed(full_reset = true):
+	if full_reset:
+		Global.used_words = []
 	Global.difficulty = 1
 	Global.letters_len = 3
 	Global.load_json("res://Data/easy_db.json")
+	setup_game_scene()
+	move_all()
+	
+func mediumPressed(full_reset = true):
+	if full_reset:
+		Global.used_words = []
+	Global.difficulty = 2
+	Global.letters_len = 4
+	Global.load_json("res://Data/medium_db.json")
+	setup_game_scene()
+	move_all()
+	
+func hardPressed(full_reset = true):
+	if full_reset:
+		Global.used_words = []
+	Global.difficulty = 3
+	Global.letters_len = 5
+	Global.load_json("res://Data/hard_db.json")
 	setup_game_scene()
 	move_all()
 	
@@ -126,14 +156,76 @@ func inGameBackButtonPressed():
 	get_node("BlankLetters").move(Vector2(0, -300))
 	get_node("SuggestedLetters").move(Vector2(0, 840))
 	get_node("BackButton").move(Vector2(0, -100))
-	get_node("HintButton").move(Vector2(1296, 616))
+	#get_node("HintButton").move(Vector2(1296, 616))
+	get_node("HouseButton").move(Vector2(1296, 0))
+	get_node("ResetButton").move(Vector2(1400, 0))
+	timer.stop()
+	get_node("HintButton").move(Vector2(1496, 0))
 	delete_children_nodes(Global.hint_image_container)
 
 
 func _on_Timer_timeout_show_hint_button():
 	#MOVAJ BUTTON NE EKRAN
-	get_node("HintButton").move(Vector2(1100, 560))
+	get_node("HintButton").move(Vector2(-370, 0))
+	hint_animation.get_animation("hintButton-color-fadeIn")
+	#hint_animation.set_loop(true)
+	hint_animation.play("hintButton-color-fadeIn")
+	#hint_animation.play("hintButton-color-fadeIn")
 	timer.stop()
 
 func hintButton_pressed():
-	img_animation.play('Img-fadeIn')
+	if(img_fadeIn_flag):
+		img_animation.play('Img-fadeIn')
+		img_fadeIn_flag = false
+
+func hint_animation_finished(anim_name):
+	if(hint_animation_counter == 2):
+		return
+	hint_animation_counter += 1
+	hint_animation.play("hintButton-color-fadeIn")
+
+func continue_pressed():
+	Global.correct_answer_pop_up.hide()
+	#get_node("BlankLetters").move(Vector2(0, -300))
+	reset_suggestion_box_positions()
+	#get_node("SuggestedLetters").move(Vector2(0, 840))
+	#yield(get_tree().create_timer(0.2), "timeout")
+	
+	if Global.difficulty == 1:
+		easyPressed(false)
+	elif Global.difficulty == 2:
+		mediumPressed(false)
+	else:
+		hardPressed(false)
+
+func houseButtonPressed():
+	get_node("UI").move(Vector2(0, 0))
+	get_node("UI/Menu/Options").move(Vector2(1280, 256))
+	get_node("UI/Menu/Start").move(Vector2(0, 0))
+	
+	get_node("BlankLetters").move(Vector2(0, -300))
+	get_node("SuggestedLetters").move(Vector2(0, 840))
+		
+	get_node("BackButton").move(Vector2(0, -100))
+	get_node("HouseButton").move(Vector2(1296, 0))
+	get_node("ResetButton").move(Vector2(1400, 0))
+	timer.stop()
+	get_node("HintButton").move(Vector2(1496, 0))
+	
+	delete_children_nodes(Global.hint_image_container)
+	reset_suggestion_box_positions()
+
+#na reset button se bas resetira cijeli taj lvl tjst izbrisu se sve zapamcene rijesene rijeci!!!
+func resetButtonPressed():
+	timer.stop()
+	get_node("HintButton").move(Vector2(1496, 0))
+	reset_suggestion_box_positions()
+	if Global.difficulty == 1:
+		easyPressed(true)
+	elif Global.difficulty == 2:
+		mediumPressed(true)
+	else:
+		hardPressed(true)
+
+func _on_Quit_pressed():
+	get_tree().quit()

@@ -1,38 +1,38 @@
 {
 	"0": {
-		"rijec": "pas",
-		"img_path": ""
+		"word": "torba",
+		"img_path": "res://HintImages/bag.png"
 	},
 	"1": {
-		"rijec": "koš",
-		"img_path": ""
+		"word": "lutka",
+		"img_path": "res://HintImages/doll.png"
 	},
 	"2": {
-		"rijec": "sok",
-		"img_path": ""
+		"word": "cesta",
+		"img_path": "res://HintImages/road.png"
 	},
 	"3": {
-		"rijec": "gol",
-		"img_path": ""
+		"word": "slova",
+		"img_path": "res://HintImages/letters.png"
 	},
 	"4": {
-		"rijec": "sat",
-		"img_path": ""
+		"word": "hlače",
+		"img_path": "res://HintImages/pants.png"
 	},
 	"5": {
-		"rijec": "med",
-		"img_path": ""
+		"word": "kruna",
+		"img_path": "res://HintImages/crown.png"
 	},
 	"6": {
-		"rijec": "sok",
-		"img_path": ""
+		"word": "krava",
+		"img_path": "res://HintImages/cow.png"
 	},
 	"7": {
-		"rijec": "bus",
-		"img_path": ""
+		"word": "mačka",
+		"img_path": "res://HintImages/cat.png"
 	},
 	"8": {
-		"rijec": "mač",
-		"img_path": ""
+		"word": "ptica",
+		"img_path": "res://HintImages/bird.png"
 	}
 }

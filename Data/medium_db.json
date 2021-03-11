@@ -1,38 +1,38 @@
 {
 	"0": {
-		"rijec": "baka",
-		"img_path": ""
+		"word": "baka",
+		"img_path": "res://HintImages/baka.png"
 	},
 	"1": {
-		"rijec": "beba",
-		"img_path": ""
+		"word": "beba",
+		"img_path": "res://HintImages/beba.png"
 	},
 	"2": {
-		"rijec": "guma",
-		"img_path": ""
+		"word": "guma",
+		"img_path": "res://HintImages/guma.png"
 	},
 	"3": {
-		"rijec": "deva",
-		"img_path": ""
+		"word": "deva",
+		"img_path": "res://HintImages/deva.png"
 	},
 	"4": {
-		"rijec": "čaša",
-		"img_path": ""
+		"word": "čaša",
+		"img_path": "res://HintImages/casa.png"
 	},
 	"5": {
-		"rijec": "kuća",
-		"img_path": ""
+		"word": "kuća",
+		"img_path": "res://HintImages/kuca.png"
 	},
 	"6": {
-		"rijec": "medo",
-		"img_path": ""
+		"word": "medo",
+		"img_path": "res://HintImages/medo.png"
 	},
 	"7": {
-		"rijec": "riba",
-		"img_path": ""
+		"word": "riba",
+		"img_path": "res://HintImages/riba.png"
 	},
 	"8": {
-		"rijec": "sova",
-		"img_path": ""
+		"word": "sova",
+		"img_path": "res://HintImages/sova.png"
 	}
 }

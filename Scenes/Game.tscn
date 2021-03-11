@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Global.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/VarelaRound-Regular.ttf" type="DynamicFontData" id=2]
@@ -16,14 +16,86 @@
 [ext_resource path="res://Scripts/HintImage.gd" type="Script" id=14]
 [ext_resource path="res://Scripts/HintButton.gd" type="Script" id=15]
 [ext_resource path="res://Assets/Icons/PNG/White/2x/information.png" type="Texture" id=16]
+[ext_resource path="res://Assets/PopMenu/StisnutiGumb.png" type="Texture" id=17]
+[ext_resource path="res://Assets/PopMenu/Gumb.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Icons/PNG/White/2x/exclamation.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Blocks/greenCircle.png" type="Texture" id=20]
+[ext_resource path="res://Assets/PopMenu/Okvir.png" type="Texture" id=21]
+[ext_resource path="res://Scripts/HouseButton.gd" type="Script" id=22]
+[ext_resource path="res://Scripts/ResetButton.gd" type="Script" id=23]
+[ext_resource path="res://Assets/Icons/PNG/White/2x/return.png" type="Texture" id=24]
+[ext_resource path="res://Assets/PopMenu/resetButtonPressed.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Icons/PNG/White/2x/home.png" type="Texture" id=26]
+[ext_resource path="res://Assets/PopMenu/homeButtonPressedi.png" type="Texture" id=27]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
+size = 27
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 19
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 25
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 29
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
 size = 60
 font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "hintButton-color-fadeIn"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("TextureButton:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0.823529, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("TextureButton:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0.419608, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("TextureButton:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0.298039, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("TextureButton:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2 )
+}
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 9 )
@@ -61,6 +133,92 @@ __meta__ = {
 [node name="Menu" type="Node2D" parent="UI"]
 script = ExtResource( 6 )
 
+[node name="PopupMenu" type="PopupMenu" parent="UI/Menu"]
+margin_left = 624.0
+margin_top = 352.0
+margin_right = 644.0
+margin_bottom = 372.0
+hide_on_item_selection = false
+
+[node name="Sprite" type="Sprite" parent="UI/Menu/PopupMenu"]
+position = Vector2( 8, 48 )
+scale = Vector2( 0.397, 0.41 )
+texture = ExtResource( 21 )
+
+[node name="CircleWithSprite" type="TextureRect" parent="UI/Menu/PopupMenu/Sprite"]
+margin_left = -141.058
+margin_top = -487.805
+margin_right = 140.942
+margin_bottom = -195.805
+texture = ExtResource( 20 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="UI/Menu/PopupMenu/Sprite/CircleWithSprite"]
+position = Vector2( 138.236, 130.145 )
+scale = Vector2( 1.66853, 1.68979 )
+texture = ExtResource( 19 )
+
+[node name="Title" type="Label" parent="UI/Menu/PopupMenu"]
+margin_left = -168.0
+margin_top = -24.0
+margin_right = 189.0
+margin_bottom = 9.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Bravo! To je točan odgovor!"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Subtitle" type="Label" parent="UI/Menu/PopupMenu"]
+margin_left = -152.0
+margin_top = 24.0
+margin_right = 176.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Tražena riječ glasila je:"
+align = 1
+valign = 1
+
+[node name="WantedWord" type="Label" parent="UI/Menu/PopupMenu"]
+margin_left = -96.0
+margin_top = 64.0
+margin_right = 112.0
+margin_bottom = 96.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
+valign = 1
+
+[node name="TextureButton" type="TextureButton" parent="UI/Menu/PopupMenu"]
+margin_left = -128.0
+margin_top = 112.0
+margin_right = 136.0
+margin_bottom = 216.0
+texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 17 )
+expand = true
+
+[node name="ButtonText" type="Label" parent="UI/Menu/PopupMenu/TextureButton"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 176.0
+margin_bottom = 72.0
+custom_fonts/font = SubResource( 5 )
+text = "Nastavi"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Start" type="Node2D" parent="UI/Menu"]
 script = ExtResource( 4 )
 
@@ -76,7 +234,7 @@ __meta__ = {
 margin_right = 1280.0
 margin_bottom = 80.0
 focus_mode = 0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.717647, 0.196078, 0.196078, 1 )
 custom_colors/font_color_hover = Color( 0.235294, 0.262745, 0.803922, 1 )
 custom_colors/font_color_pressed = Color( 0.235294, 0.262745, 0.803922, 1 )
@@ -91,7 +249,7 @@ margin_top = 84.0
 margin_right = 1280.0
 margin_bottom = 164.0
 focus_mode = 0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.717647, 0.196078, 0.196078, 1 )
 custom_colors/font_color_hover = Color( 0.235294, 0.262745, 0.803922, 1 )
 custom_colors/font_color_pressed = Color( 0.235294, 0.262745, 0.803922, 1 )
@@ -103,7 +261,7 @@ margin_top = 168.0
 margin_right = 1280.0
 margin_bottom = 248.0
 focus_mode = 0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.717647, 0.196078, 0.196078, 1 )
 custom_colors/font_color_hover = Color( 0.235294, 0.262745, 0.803922, 1 )
 custom_colors/font_color_pressed = Color( 0.235294, 0.262745, 0.803922, 1 )
@@ -130,7 +288,7 @@ __meta__ = {
 margin_right = 1280.0
 margin_bottom = 80.0
 focus_mode = 0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.717647, 0.196078, 0.196078, 1 )
 custom_colors/font_color_hover = Color( 0.235294, 0.262745, 0.803922, 1 )
 custom_colors/font_color_pressed = Color( 0.235294, 0.262745, 0.803922, 1 )
@@ -145,7 +303,7 @@ margin_top = 84.0
 margin_right = 1280.0
 margin_bottom = 164.0
 focus_mode = 0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.717647, 0.196078, 0.196078, 1 )
 custom_colors/font_color_hover = Color( 0.235294, 0.262745, 0.803922, 1 )
 custom_colors/font_color_pressed = Color( 0.235294, 0.262745, 0.803922, 1 )
@@ -160,7 +318,7 @@ margin_top = 168.0
 margin_right = 1280.0
 margin_bottom = 248.0
 focus_mode = 0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.717647, 0.196078, 0.196078, 1 )
 custom_colors/font_color_hover = Color( 0.235294, 0.262745, 0.803922, 1 )
 custom_colors/font_color_pressed = Color( 0.235294, 0.262745, 0.803922, 1 )
@@ -208,13 +366,16 @@ __meta__ = {
 
 [node name="move_tween" type="Tween" parent="BlankLetters"]
 
+[node name="HintButtonTimer" type="Timer" parent="."]
+
 [node name="BackButton" type="Node2D" parent="."]
 position = Vector2( 0, -100 )
 script = ExtResource( 12 )
 
 [node name="TextureButton" type="TextureButton" parent="BackButton"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 100.0
+margin_bottom = 100.0
+focus_mode = 0
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 7 )
 __meta__ = {
@@ -223,7 +384,57 @@ __meta__ = {
 
 [node name="move_tween" type="Tween" parent="BackButton"]
 
-[node name="HomeButton" type="Node2D" parent="."]
+[node name="HouseButton" type="Node2D" parent="."]
+script = ExtResource( 22 )
+
+[node name="TextureButton" type="TextureButton" parent="HouseButton"]
+margin_left = 1296.0
+margin_top = 600.0
+margin_right = 1396.0
+margin_bottom = 700.0
+texture_normal = ExtResource( 26 )
+texture_pressed = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="move_tween" type="Tween" parent="HouseButton"]
+
+[node name="ResetButton" type="Node2D" parent="."]
+script = ExtResource( 23 )
+
+[node name="TextureButton" type="TextureButton" parent="ResetButton"]
+margin_left = 1400.0
+margin_top = 600.0
+margin_right = 1500.0
+margin_bottom = 700.0
+texture_normal = ExtResource( 24 )
+texture_pressed = ExtResource( 25 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="move_tween" type="Tween" parent="ResetButton"]
+
+[node name="HintButton" type="Node2D" parent="."]
+script = ExtResource( 15 )
+
+[node name="TextureButton" type="TextureButton" parent="HintButton"]
+modulate = Color( 0.823529, 0.419608, 0.298039, 1 )
+margin_left = 1496.0
+margin_top = 600.0
+margin_right = 1596.0
+margin_bottom = 700.0
+focus_mode = 0
+texture_normal = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="move_tween" type="Tween" parent="HintButton"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HintButton"]
+anims/hintButton-color-fadeIn = SubResource( 7 )
 
 [node name="SuggestedLetters" type="Node2D" parent="."]
 position = Vector2( 0, 840 )
@@ -238,25 +449,16 @@ __meta__ = {
 }
 
 [node name="move_tween" type="Tween" parent="SuggestedLetters"]
-
-[node name="HintButtonTimer" type="Timer" parent="."]
-
-[node name="HintButton" type="Node2D" parent="."]
-position = Vector2( 1296, 616 )
-script = ExtResource( 15 )
-
-[node name="TextureButton" type="TextureButton" parent="HintButton"]
-margin_right = 40.0
-margin_bottom = 40.0
-texture_normal = ExtResource( 16 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="move_tween" type="Tween" parent="HintButton"]
+[connection signal="pressed" from="UI/Menu/PopupMenu/TextureButton" to="." method="continue_pressed"]
 [connection signal="pressed" from="UI/Menu/Start/StartMenu/Start" to="UI/Menu" method="startPressed"]
+[connection signal="pressed" from="UI/Menu/Start/StartMenu/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="pressed" from="UI/Menu/Options/OptionsMenu/Easy" to="." method="easyPressed"]
+[connection signal="pressed" from="UI/Menu/Options/OptionsMenu/Medium" to="." method="mediumPressed"]
+[connection signal="pressed" from="UI/Menu/Options/OptionsMenu/Hard" to="." method="hardPressed"]
 [connection signal="pressed" from="UI/Menu/Options/BackButton" to="UI/Menu" method="optionsBackButtonPressed"]
-[connection signal="pressed" from="BackButton/TextureButton" to="." method="inGameBackButtonPressed"]
 [connection signal="timeout" from="HintButtonTimer" to="." method="_on_Timer_timeout_show_hint_button"]
+[connection signal="pressed" from="BackButton/TextureButton" to="." method="inGameBackButtonPressed"]
+[connection signal="pressed" from="HouseButton/TextureButton" to="." method="houseButtonPressed"]
+[connection signal="pressed" from="ResetButton/TextureButton" to="." method="resetButtonPressed"]
 [connection signal="pressed" from="HintButton/TextureButton" to="." method="hintButton_pressed"]
+[connection signal="animation_finished" from="HintButton/AnimationPlayer" to="." method="hint_animation_finished"]
