@@ -64,6 +64,7 @@ func generate_hint_image(img_path):
 	
 	
 func setup_game_scene():
+	Global.correct_counter = 0
 	var word_array = []
 	var joined_word_array
 	var word_and_img
