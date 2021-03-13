@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Global.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/VarelaRound-Regular.ttf" type="DynamicFontData" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://Assets/PopMenu/resetButtonPressed.png" type="Texture" id=25]
 [ext_resource path="res://Assets/Icons/PNG/White/2x/home.png" type="Texture" id=26]
 [ext_resource path="res://Assets/PopMenu/homeButtonPressedi.png" type="Texture" id=27]
+[ext_resource path="res://Scripts/Help.gd" type="Script" id=28]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -53,8 +54,12 @@ font_data = ExtResource( 2 )
 size = 60
 font_data = ExtResource( 2 )
 
-[sub_resource type="Animation" id=7]
-resource_name = "hintButton-color-fadeIn"
+[sub_resource type="DynamicFont" id=7]
+size = 29
+outline_size = 1
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=8]
 length = 2.0
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("TextureButton:modulate:r")
@@ -341,6 +346,94 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Help" type="Node2D" parent="UI/Menu"]
+position = Vector2( 1280, 96 )
+script = ExtResource( 28 )
+
+[node name="TextureRect" type="TextureRect" parent="UI/Menu/Help"]
+margin_left = 208.0
+margin_top = -24.0
+margin_right = 1072.0
+margin_bottom = 576.0
+texture = ExtResource( 21 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="UI/Menu/Help/TextureRect"]
+margin_left = 96.0
+margin_top = 72.0
+margin_right = 784.0
+margin_bottom = 176.0
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.145098, 0.294118, 0.439216, 1 )
+custom_colors/font_outline_modulate = Color( 0.145098, 0.294118, 0.439216, 1 )
+text = "CILJ IGRE: posložiti ispravno slova kako bi se dobila tražena riječ"
+valign = 1
+autowrap = true
+
+[node name="Label3" type="Label" parent="UI/Menu/Help/TextureRect"]
+margin_left = 96.0
+margin_top = 184.0
+margin_right = 784.0
+margin_bottom = 248.0
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.145098, 0.294118, 0.439216, 1 )
+custom_colors/font_outline_modulate = Color( 0.145098, 0.294118, 0.439216, 1 )
+text = "Lagano - riječi sa 3 slova"
+valign = 1
+autowrap = true
+
+[node name="Label4" type="Label" parent="UI/Menu/Help/TextureRect"]
+margin_left = 96.0
+margin_top = 240.0
+margin_right = 784.0
+margin_bottom = 296.0
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.145098, 0.294118, 0.439216, 1 )
+custom_colors/font_outline_modulate = Color( 0.145098, 0.294118, 0.439216, 1 )
+text = "Srednje - riječi sa 4 slova"
+valign = 1
+autowrap = true
+
+[node name="Label5" type="Label" parent="UI/Menu/Help/TextureRect"]
+margin_left = 96.0
+margin_top = 296.0
+margin_right = 784.0
+margin_bottom = 344.0
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.145098, 0.294118, 0.439216, 1 )
+custom_colors/font_outline_modulate = Color( 0.145098, 0.294118, 0.439216, 1 )
+text = "Teško - riječi sa 5 slova"
+valign = 1
+autowrap = true
+
+[node name="Label2" type="Label" parent="UI/Menu/Help/TextureRect"]
+margin_left = 96.0
+margin_top = 384.0
+margin_right = 784.0
+margin_bottom = 488.0
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.733333, 0.360784, 0.396078, 1 )
+custom_colors/font_outline_modulate = Color( 0.733333, 0.360784, 0.396078, 1 )
+text = "*ako zatreba pomoć, savjet će uletiti na vrijeme"
+valign = 1
+autowrap = true
+
+[node name="TextureButton" type="TextureButton" parent="UI/Menu/Help"]
+margin_left = 48.0
+margin_top = -80.0
+margin_right = 148.0
+margin_bottom = 20.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="move_tween" type="Tween" parent="UI/Menu/Help"]
+
 [node name="move_tween" type="Tween" parent="UI"]
 
 [node name="HintImage" type="Node2D" parent="."]
@@ -358,7 +451,6 @@ margin_right = 700.0
 margin_bottom = 128.0
 grow_horizontal = 0
 grow_vertical = 0
-rect_clip_content = true
 custom_constants/separation = 30
 __meta__ = {
 "_edit_use_anchors_": false
@@ -434,7 +526,7 @@ __meta__ = {
 [node name="move_tween" type="Tween" parent="HintButton"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HintButton"]
-anims/hintButton-color-fadeIn = SubResource( 7 )
+anims/hintButton-color-fadeIn = SubResource( 8 )
 
 [node name="SuggestedLetters" type="Node2D" parent="."]
 position = Vector2( 0, 840 )
@@ -451,11 +543,13 @@ __meta__ = {
 [node name="move_tween" type="Tween" parent="SuggestedLetters"]
 [connection signal="pressed" from="UI/Menu/PopupMenu/TextureButton" to="." method="continue_pressed"]
 [connection signal="pressed" from="UI/Menu/Start/StartMenu/Start" to="UI/Menu" method="startPressed"]
+[connection signal="pressed" from="UI/Menu/Start/StartMenu/Help" to="." method="helpPressed"]
 [connection signal="pressed" from="UI/Menu/Start/StartMenu/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="pressed" from="UI/Menu/Options/OptionsMenu/Easy" to="." method="easyPressed"]
 [connection signal="pressed" from="UI/Menu/Options/OptionsMenu/Medium" to="." method="mediumPressed"]
 [connection signal="pressed" from="UI/Menu/Options/OptionsMenu/Hard" to="." method="hardPressed"]
 [connection signal="pressed" from="UI/Menu/Options/BackButton" to="UI/Menu" method="optionsBackButtonPressed"]
+[connection signal="pressed" from="UI/Menu/Help/TextureButton" to="." method="helpBackButtonPressed"]
 [connection signal="timeout" from="HintButtonTimer" to="." method="_on_Timer_timeout_show_hint_button"]
 [connection signal="pressed" from="BackButton/TextureButton" to="." method="inGameBackButtonPressed"]
 [connection signal="pressed" from="HouseButton/TextureButton" to="." method="houseButtonPressed"]

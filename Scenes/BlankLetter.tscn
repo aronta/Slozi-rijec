@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Fonts/VarelaRound-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/Blocks/BlueProjectile.png" type="Texture" id=2]
-[ext_resource path="res://BlankLetter.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/BlankLetter.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Blocks/environment_06.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 53
@@ -32,6 +33,18 @@ custom_fonts/font = SubResource( 1 )
 text = "?"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Okvir" type="TextureRect" parent="."]
+visible = false
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 96.0
+margin_bottom = 96.0
+texture = ExtResource( 4 )
+stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }

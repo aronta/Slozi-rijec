@@ -227,6 +227,14 @@ func resetButtonPressed():
 		mediumPressed(true)
 	else:
 		hardPressed(true)
+		
+func helpPressed():
+	get_node("UI/Menu/Start").move(Vector2(-1280, 0))
+	get_node("UI/Menu/Help").move(Vector2(0, 100))
+	
+func helpBackButtonPressed():
+	get_node("UI/Menu/Start").move(Vector2(0, 0))
+	get_node("UI/Menu/Help").move(Vector2(1280, 100))
 
 func _on_Quit_pressed():
 	get_tree().quit()
