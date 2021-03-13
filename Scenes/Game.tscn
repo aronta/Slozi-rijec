@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Global.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/VarelaRound-Regular.ttf" type="DynamicFontData" id=2]
@@ -28,6 +28,10 @@
 [ext_resource path="res://Assets/Icons/PNG/White/2x/home.png" type="Texture" id=26]
 [ext_resource path="res://Assets/PopMenu/homeButtonPressedi.png" type="Texture" id=27]
 [ext_resource path="res://Scripts/Help.gd" type="Script" id=28]
+[ext_resource path="res://Assets/PopMenu/HomeButtonPressed.png" type="Texture" id=29]
+[ext_resource path="res://Assets/PopMenu/HomeButton.png" type="Texture" id=30]
+[ext_resource path="res://Assets/Icons/PNG/White/2x/trophy.png" type="Texture" id=31]
+[ext_resource path="res://Assets/Blocks/blueCircle.png" type="Texture" id=32]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -128,7 +132,7 @@ margin_right = 1280.0
 margin_bottom = 193.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.145098, 0.294118, 0.439216, 1 )
-text = "VJEŠALICA"
+text = "SLOVO PO SLOVO"
 align = 1
 valign = 1
 __meta__ = {
@@ -201,6 +205,7 @@ custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 align = 1
 valign = 1
+autowrap = true
 
 [node name="TextureButton" type="TextureButton" parent="UI/Menu/PopupMenu"]
 margin_left = -128.0
@@ -220,6 +225,72 @@ custom_fonts/font = SubResource( 5 )
 text = "Nastavi"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EndPopupMenu" type="PopupMenu" parent="UI/Menu"]
+margin_left = 624.0
+margin_top = 352.0
+margin_right = 644.0
+margin_bottom = 372.0
+hide_on_item_selection = false
+
+[node name="Sprite" type="Sprite" parent="UI/Menu/EndPopupMenu"]
+position = Vector2( 8, 48 )
+scale = Vector2( 0.397, 0.41 )
+texture = ExtResource( 21 )
+
+[node name="CircleWithSprite" type="TextureRect" parent="UI/Menu/EndPopupMenu/Sprite"]
+margin_left = -120.907
+margin_top = -448.781
+margin_right = 121.093
+margin_bottom = -214.781
+texture = ExtResource( 32 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="UI/Menu/EndPopupMenu/Sprite/CircleWithSprite"]
+position = Vector2( 120.698, 117.293 )
+scale = Vector2( 1.66853, 1.68979 )
+texture = ExtResource( 31 )
+
+[node name="Title" type="Label" parent="UI/Menu/EndPopupMenu"]
+margin_left = -168.0
+margin_top = -24.0
+margin_right = 189.0
+margin_bottom = 9.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Bravo! Sve je uspješno riješeno"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Subtitle" type="Label" parent="UI/Menu/EndPopupMenu"]
+margin_left = -160.0
+margin_top = 48.0
+margin_right = 168.0
+margin_bottom = 80.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Za povratak na početak:"
+align = 1
+valign = 1
+
+[node name="TextureButton" type="TextureButton" parent="UI/Menu/EndPopupMenu"]
+margin_left = -56.0
+margin_top = 96.0
+margin_right = 64.0
+margin_bottom = 208.0
+texture_normal = ExtResource( 30 )
+texture_pressed = ExtResource( 29 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -542,6 +613,7 @@ __meta__ = {
 
 [node name="move_tween" type="Tween" parent="SuggestedLetters"]
 [connection signal="pressed" from="UI/Menu/PopupMenu/TextureButton" to="." method="continue_pressed"]
+[connection signal="pressed" from="UI/Menu/EndPopupMenu/TextureButton" to="." method="endButtonPressed"]
 [connection signal="pressed" from="UI/Menu/Start/StartMenu/Start" to="UI/Menu" method="startPressed"]
 [connection signal="pressed" from="UI/Menu/Start/StartMenu/Help" to="." method="helpPressed"]
 [connection signal="pressed" from="UI/Menu/Start/StartMenu/Quit" to="." method="_on_Quit_pressed"]

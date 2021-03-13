@@ -16,11 +16,13 @@ onready var hint_animation = get_node("HintButton/AnimationPlayer")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.correct_answer_pop_up = get_node("UI/Menu/PopupMenu")
-
+	Global.end_pop_up = get_node("UI/Menu/EndPopupMenu")\
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	if (Global.timer_hint_flag):
+		_on_Timer_timeout_show_hint_button()
+	
 func reset_suggestion_box_positions():
 	var suggestion_container = get_node("SuggestedLetters/HBoxContainer")
 	suggestion_container.set_alignment(0)
@@ -64,13 +66,16 @@ func generate_hint_image(img_path):
 	
 	
 func setup_game_scene():
+	Global.stop_hint_timer_all_correct = false
 	Global.correct_counter = 0
+	Global.error_cnt = 0
 	var word_array = []
 	var joined_word_array
 	var word_and_img
 	var word
 	var img_path
 	var number_of_words = Global.words.size();
+	Global.words_len = number_of_words
 	var used_words
 	
 	var rand
@@ -109,7 +114,8 @@ func setup_game_scene():
 	
 	generate_hint_image(img_path)
 	
-	timer.set_wait_time(Global.letters_len * 1)
+	timer.set_wait_time(Global.letters_len * 4)
+	
 	img_animation = get_node("HintImage/TextureRect/AnimationPlayer")
 	timer.start()
 	
@@ -161,16 +167,22 @@ func inGameBackButtonPressed():
 	get_node("HouseButton").move(Vector2(1296, 0))
 	get_node("ResetButton").move(Vector2(1400, 0))
 	timer.stop()
+	Global.error_cnt = 0
+	Global.timer_hint_flag = false 
 	get_node("HintButton").move(Vector2(1496, 0))
 	delete_children_nodes(Global.hint_image_container)
 
 
 func _on_Timer_timeout_show_hint_button():
+	if(Global.stop_hint_timer_all_correct):
+		timer.stop()
+		return
 	#MOVAJ BUTTON NE EKRAN
 	get_node("HintButton").move(Vector2(-370, 0))
 	hint_animation.get_animation("hintButton-color-fadeIn")
 	#hint_animation.set_loop(true)
 	hint_animation.play("hintButton-color-fadeIn")
+	Global.timer_hint_flag = false
 	#hint_animation.play("hintButton-color-fadeIn")
 	timer.stop()
 
@@ -211,6 +223,8 @@ func houseButtonPressed():
 	get_node("HouseButton").move(Vector2(1296, 0))
 	get_node("ResetButton").move(Vector2(1400, 0))
 	timer.stop()
+	Global.error_cnt = 0
+	Global.timer_hint_flag = false 
 	get_node("HintButton").move(Vector2(1496, 0))
 	
 	delete_children_nodes(Global.hint_image_container)
@@ -235,6 +249,13 @@ func helpPressed():
 func helpBackButtonPressed():
 	get_node("UI/Menu/Start").move(Vector2(0, 0))
 	get_node("UI/Menu/Help").move(Vector2(1280, 100))
+	
+func endButtonPressed():
+	Global.end_pop_up.hide()
+	get_node("UI").move(Vector2(0, 0))
+	reset_suggestion_box_positions()
+	get_node("BlankLetters").move(Vector2(0, -300))
+	get_node("SuggestedLetters").move(Vector2(0, 840))
 
 func _on_Quit_pressed():
 	get_tree().quit()

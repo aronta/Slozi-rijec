@@ -12,6 +12,11 @@ var used_words = []
 
 var mistakes_counter
 var correct_answer_pop_up
+var end_pop_up
+var words_len
+var error_cnt = 0
+var timer_hint_flag
+var stop_hint_timer_all_correct = false
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"

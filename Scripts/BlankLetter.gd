@@ -43,12 +43,21 @@ func _process(delta):
 			Global.suggested_letters_container.set_alignment(0)
 			timer.start()
 			blank_letter.texture = load("res://Assets/Blocks/RedProjectile.png")
+			Global.error_cnt += 1
+			if (Global.error_cnt == Global.difficulty):
+				Global.timer_hint_flag = true
 		#Sve tocno
 		if(Global.correct_counter == Global.letters_len):
 			Global.correct_counter = 0
+			Global.timer_hint_flag = false
 			move_buttons_away()
-			Global.correct_answer_pop_up.get_child(4).text = Global.wanted_word
-			Global.correct_answer_pop_up.show()
+			Global.stop_hint_timer_all_correct = true
+			if(Global.words_len == len(Global.used_words)):
+				Global.end_pop_up.show()
+			else:
+				Global.correct_answer_pop_up.get_child(4).text = Global.wanted_word
+				Global.correct_answer_pop_up.show()
+		
 		flag = false
 		
 		
