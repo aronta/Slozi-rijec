@@ -497,6 +497,9 @@ custom_colors/font_outline_modulate = Color( 0.145098, 0.294118, 0.439216, 1 )
 text = "CILJ IGRE: posložiti ispravno slova kako bi se dobila tražena riječ"
 valign = 1
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label3" type="Label" parent="UI/Menu/Help/TextureRect"]
 margin_left = 96.0
@@ -542,7 +545,7 @@ margin_bottom = 488.0
 custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.733333, 0.360784, 0.396078, 1 )
 custom_colors/font_outline_modulate = Color( 0.733333, 0.360784, 0.396078, 1 )
-text = "*ako zapneš, pomoć, će stići na vrijeme :)"
+text = "*ako zapneš, pomoć će stići na vrijeme :)"
 valign = 1
 autowrap = true
 __meta__ = {
