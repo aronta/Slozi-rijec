@@ -488,9 +488,12 @@ margin_bottom = 488.0
 custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.733333, 0.360784, 0.396078, 1 )
 custom_colors/font_outline_modulate = Color( 0.733333, 0.360784, 0.396078, 1 )
-text = "*ako zatreba pomoć, savjet će uletiti na vrijeme"
+text = "*ako zapneš, pomoć, će stići na vrijeme :)"
 valign = 1
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureButton" type="TextureButton" parent="UI/Menu/Help"]
 margin_left = 48.0
