@@ -10,7 +10,7 @@ size = 53
 font_data = ExtResource( 1 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 8, 8 )
+extents = Vector2( 16, 16 )
 
 [node name="BlankLetter" type="TextureRect"]
 margin_left = -40.0

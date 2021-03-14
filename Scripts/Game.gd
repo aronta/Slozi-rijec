@@ -40,8 +40,8 @@ func generate_blank_words():
 		var letter = blank_letter_box.instance()
 		blank_letters_container.add_child(letter)
 	#MOZDA IFAT za ljepotu
-	blank_letters_container.add_constant_override("separation", 55)
-	blank_letters_container.margin_left = 55
+	blank_letters_container.add_constant_override("separation", 65)
+	blank_letters_container.margin_left = 65
 
 func generate_suggested_letters(suggested_word):
 	var suggested_letters_container = get_node("SuggestedLetters/HBoxContainer");
@@ -52,8 +52,8 @@ func generate_suggested_letters(suggested_word):
 		letter.get_children()[0].text = suggested_word[i]
 		suggested_letters_container.add_child(letter)
 	#MOZDA IFAT za ljepotu
-	suggested_letters_container.add_constant_override("separation", 55)
-	suggested_letters_container.margin_left = 55
+	suggested_letters_container.add_constant_override("separation", 65)
+	suggested_letters_container.margin_left = 65
 
 func generate_hint_image(img_path):
 	var hint_image_container = get_node("HintImage")
