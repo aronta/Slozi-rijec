@@ -190,6 +190,9 @@ func hintButton_pressed():
 	if(img_fadeIn_flag):
 		img_animation.play('Img-fadeIn')
 		img_fadeIn_flag = false
+		get_node("HintButton").get_children()[0].set_pressed(true)
+		yield(get_tree().create_timer(0.15), "timeout")
+		get_node("HintButton").get_children()[0].set_pressed(false)
 
 func hint_animation_finished(anim_name):
 	if(hint_animation_counter == 2):

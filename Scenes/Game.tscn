@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Global.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/VarelaRound-Regular.ttf" type="DynamicFontData" id=2]
@@ -34,6 +34,8 @@
 [ext_resource path="res://Assets/Blocks/blueCircle.png" type="Texture" id=32]
 [ext_resource path="res://Assets/PopMenu/menu_button.png" type="Texture" id=33]
 [ext_resource path="res://Assets/PopMenu/menu_button_pressed.png" type="Texture" id=34]
+[ext_resource path="res://Assets/PopMenu/hint-frame.png" type="Texture" id=35]
+[ext_resource path="res://Assets/PopMenu/hint-frame-pressed.png" type="Texture" id=36]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -56,7 +58,7 @@ font_data = ExtResource( 2 )
 size = 29
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=6]
 size = 35
 font_data = ExtResource( 2 )
 
@@ -316,7 +318,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="UI/Menu/Start/Start"]
 margin_right = 336.0
 margin_bottom = 96.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 6 )
 text = "Započni"
 align = 1
 valign = 1
@@ -341,7 +343,7 @@ __meta__ = {
 [node name="Label2" type="Label" parent="UI/Menu/Start/Help"]
 margin_right = 336.0
 margin_bottom = 96.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 6 )
 text = "Upute"
 align = 1
 valign = 1
@@ -366,7 +368,7 @@ __meta__ = {
 [node name="Label2" type="Label" parent="UI/Menu/Start/Quit"]
 margin_right = 336.0
 margin_bottom = 96.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 6 )
 text = "Izlaz"
 align = 1
 valign = 1
@@ -397,7 +399,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="UI/Menu/Options/Easy"]
 margin_right = 336.0
 margin_bottom = 96.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 6 )
 text = "Lagano"
 align = 1
 valign = 1
@@ -422,7 +424,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="UI/Menu/Options/Medium"]
 margin_right = 336.0
 margin_bottom = 96.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 6 )
 text = "Srednje"
 align = 1
 valign = 1
@@ -447,7 +449,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="UI/Menu/Options/Hard"]
 margin_right = 336.0
 margin_bottom = 96.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 6 )
 text = "Teško"
 align = 1
 valign = 1
@@ -637,14 +639,29 @@ __meta__ = {
 [node name="HintButton" type="Node2D" parent="."]
 script = ExtResource( 15 )
 
+[node name="TextureButton2" type="TextureButton" parent="HintButton"]
+margin_left = 1512.0
+margin_top = 608.0
+margin_right = 1616.0
+margin_bottom = 705.0
+toggle_mode = true
+texture_normal = ExtResource( 35 )
+texture_pressed = ExtResource( 36 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TextureButton" type="TextureButton" parent="HintButton"]
 modulate = Color( 0.823529, 0.419608, 0.298039, 1 )
-margin_left = 1496.0
-margin_top = 600.0
-margin_right = 1596.0
-margin_bottom = 700.0
+margin_left = 1528.0
+margin_top = 616.0
+margin_right = 1600.0
+margin_bottom = 692.0
+focus_neighbour_top = NodePath("../TextureButton2")
 focus_mode = 0
 texture_normal = ExtResource( 16 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
