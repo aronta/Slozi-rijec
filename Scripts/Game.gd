@@ -161,6 +161,7 @@ func hardPressed(full_reset = true):
 func inGameBackButtonPressed():
 	get_node("UI").move(Vector2(0, 0))
 	get_node("BlankLetters").move(Vector2(0, -300))
+	reset_suggestion_box_positions()
 	get_node("SuggestedLetters").move(Vector2(0, 840))
 	get_node("BackButton").move(Vector2(0, -100))
 	#get_node("HintButton").move(Vector2(1296, 616))
@@ -220,6 +221,7 @@ func houseButtonPressed():
 	get_node("UI/Menu/Start").move(Vector2(0, 0))
 	
 	get_node("BlankLetters").move(Vector2(0, -300))
+	reset_suggestion_box_positions()
 	get_node("SuggestedLetters").move(Vector2(0, 840))
 		
 	get_node("BackButton").move(Vector2(0, -100))
@@ -231,7 +233,6 @@ func houseButtonPressed():
 	get_node("HintButton").move(Vector2(1496, 0))
 	
 	delete_children_nodes(Global.hint_image_container)
-	reset_suggestion_box_positions()
 
 #na reset button se bas resetira cijeli taj lvl tjst izbrisu se sve zapamcene rijesene rijeci!!!
 func resetButtonPressed():
@@ -257,6 +258,7 @@ func endButtonPressed():
 	Global.end_pop_up.hide()
 	get_node("UI").move(Vector2(0, 0))
 	reset_suggestion_box_positions()
+	delete_children_nodes(get_node("HintImage"))
 	get_node("BlankLetters").move(Vector2(0, -300))
 	get_node("SuggestedLetters").move(Vector2(0, 840))
 
