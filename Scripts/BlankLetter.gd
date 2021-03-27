@@ -86,5 +86,5 @@ func _on_Area2D_area_exited(area):
 
 
 func _on_Timer_timeout():
-	self.texture = load("res://Assets/Blocks/BlueProjectile.png")
+	self.texture = load("res://Assets/Blocks/BlueProjectile-darker.png")
 	timer.stop()

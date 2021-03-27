@@ -1,23 +1,23 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Fonts/VarelaRound-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Assets/Blocks/BlueProjectile.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Blocks/BlueProjectile-darker.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/BlankLetter.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Blocks/environment_06.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
-size = 53
+size = 69
 font_data = ExtResource( 1 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 16, 16 )
 
 [node name="BlankLetter" type="TextureRect"]
-margin_left = -40.0
-margin_top = -40.0
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 80, 80 )
+margin_left = -48.0
+margin_top = -48.0
+margin_right = 48.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 96, 96 )
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 5
@@ -27,8 +27,8 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_right = 80.0
-margin_bottom = 80.0
+margin_right = 96.0
+margin_bottom = 96.0
 custom_fonts/font = SubResource( 1 )
 text = "?"
 align = 1
@@ -41,8 +41,8 @@ __meta__ = {
 visible = false
 margin_left = -16.0
 margin_top = -16.0
-margin_right = 96.0
-margin_bottom = 96.0
+margin_right = 112.0
+margin_bottom = 112.0
 texture = ExtResource( 4 )
 stretch_mode = 5
 __meta__ = {
@@ -50,7 +50,7 @@ __meta__ = {
 }
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2( 40, 40 )
+position = Vector2( 48, 48 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 2 )
